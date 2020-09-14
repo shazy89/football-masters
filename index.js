@@ -1,6 +1,11 @@
-document.addEventListener('DOMContentLoaded', function(){
-Materialize.materialize()
+  document.addEventListener('DOMContentLoaded', callbacks)
 
-})
+
+  function callbacks() {
+      Materialize.materialize()
+      Api.leaguesdataRequest()
+  }
+
+  
 
 
