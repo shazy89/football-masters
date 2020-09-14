@@ -4,7 +4,8 @@
   function callbacks() {
       Materialize.materialize()
       Api.leaguesdataRequest()
-  }
+    }
+
 
   
 

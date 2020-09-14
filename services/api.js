@@ -40,8 +40,8 @@ let trigger = new Api
     }
    }
 
-  static teams() {
-    fetch(`"https://api-football-v1.p.rapidapi.com/v2/teams/league/{league_id}"`,{
+  static teams(id) {
+    fetch(`https://api-football-v1.p.rapidapi.com/v2/teams/league/${id}`,{
       method: "GET",
       headers: {
           "x-rapidapi-host": "api-football-v1.p.rapidapi.com",
@@ -50,13 +50,13 @@ let trigger = new Api
       }
     })
     .then(resp => resp.json())
-    .then(data =>  {debugger})
+    .then(data =>  Teams.createTeams(data)) 
    }
+  }
        
 
      
    
-  }
 
 
 

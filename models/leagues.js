@@ -16,7 +16,7 @@ static createLeague(league_id, name, country, country_code, logo, flag) {
           if(Leagues.all.map(element => {return element.country}).includes(country) === false){
             league.allLeagues = []
              Leagues.all.push(league)
-             league.display()
+             league.displayLeagues()
              return league
          } else {
              let obj = Leagues.all.find(element => {return element.country === league.country})
@@ -32,7 +32,7 @@ static createLeague(league_id, name, country, country_code, logo, flag) {
            return league
         }
         
-        display() {
+        displayLeagues() {
             const collapsableUl = () => document.querySelector('.collapsible')
             const li = document.createElement('li')
             const div1 = document.createElement('div')
@@ -53,7 +53,8 @@ static createLeague(league_id, name, country, country_code, logo, flag) {
             flag.style= "width: 30px; height: 20px; margin: 15px;"
             div1.innerText = this.country
             div1.appendChild(flag)
-        
+           
+            div2.id = this.league_id
             div2.className = "collapsible-body"
             div2.innerText = this.name
             div2.style = "margin-left: 7px; background-color: #eceff1"
@@ -63,6 +64,11 @@ static createLeague(league_id, name, country, country_code, logo, flag) {
         
             logo.src = this.logo
             logo.style= "width: 30px; margin-left: 10px; "
+
+            div2.addEventListener('click', function(){
+                Api.teams(this.id)
+            })
+  
         }
             
 
@@ -78,13 +84,22 @@ static createLeague(league_id, name, country, country_code, logo, flag) {
              newDiv2.className = "collapsible-body"
              newDiv2.style = "margin-left: 7px; background-color: #eceff1;"
              newDiv2.innerText = this.name
+             newDiv2.id = this.league_id
  
              newDiv2.appendChild(newSpan)
              newSpan.appendChild(newLogo)
  
              newLogo.src = this.logo
              newLogo.style= "width: 30px; margin-left: 10px; "
+
+             newDiv2.addEventListener('click', function(){
+                Api.teams(this.id)
+             })
    
+       }
+
+       static getFavoruiteLeagues() {
+
        }
            
               
