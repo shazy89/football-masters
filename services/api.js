@@ -2,7 +2,7 @@ class Api {
 
 static allCountrieNames = []
 
- static loadLeagues(){
+ static loadCountries(){
     fetch("https://api-football-v1.p.rapidapi.com/v2/countries",{
         method: "GET",
         headers: {
