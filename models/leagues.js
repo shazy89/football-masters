@@ -13,24 +13,20 @@ class Leagues {
 static createLeague(league_id, name, country, country_code, logo, flag) {
     
      let league = new Leagues(league_id, name, country, country_code, logo, flag)
-     if(Leagues.all.map(element => {return element.country}).includes(country) === false){
-        league.allLeagues = []
-         Leagues.all.push(league)
-         league.display()
-         return league
+          if(Leagues.all.map(element => {return element.country}).includes(country) === false){
+            league.allLeagues = []
+             Leagues.all.push(league)
+             league.display()
+             return league
          } else {
              let obj = Leagues.all.find(element => {return element.country === league.country})
              obj.allLeagues.push({league_id: league.league_id, name: league.name, logo:league.logo})
              league.updateLeagues()
               return obj
-            }
+       }
+    }
            
-        
-        }
   
-
-
-           
         static createLeagues(leaguesData){
            let league = leaguesData.api.leagues.forEach(data => Leagues.createLeague(data.league_id, data.name, data.country, data.country_code, data.logo, data.flag))
            return league
@@ -52,7 +48,6 @@ static createLeague(league_id, name, country, country_code, logo, flag) {
             li.appendChild(div2)
             li.id = this.country
              
-            
             div1.className = "collapsible-header"
             flag.src = this.flag
             flag.style= "width: 30px; height: 20px; margin: 15px;"
@@ -69,6 +64,7 @@ static createLeague(league_id, name, country, country_code, logo, flag) {
             logo.src = this.logo
             logo.style= "width: 30px; margin-left: 10px; "
         }
+            
 
          updateLeagues() {
            
@@ -94,6 +90,9 @@ static createLeague(league_id, name, country, country_code, logo, flag) {
               
 
 }
+
+
+           
              
              
             
