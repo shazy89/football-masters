@@ -50,12 +50,12 @@ let trigger = new Api
       }
     })
     .then(resp => resp.json())
-    .then(data =>  Teams.createTeams(data)) 
+    .then(data => Teams.createTeams(data)) 
    }
   }
        
 
-     
+
    
 
 
@@ -68,5 +68,3 @@ let trigger = new Api
      
 
 
-
-// data.api.leagues.slice(0, 5)

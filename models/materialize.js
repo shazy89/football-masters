@@ -1,6 +1,6 @@
 class Materialize {
     static materialize(){
-      let trigger = new Materialize
+      const trigger = new Materialize
       trigger.modal()
       trigger.sideNav()
       trigger.collabsable()

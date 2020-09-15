@@ -55,15 +55,16 @@ static createLeague(league_id, name, country, country_code, logo, flag) {
             div1.appendChild(flag)
            
             div2.id = this.league_id
+            div2.style = "cursor: pointer;"
             div2.className = "collapsible-body"
             div2.innerText = this.name
-            div2.style = "margin-left: 7px; background-color: #eceff1"
+            div2.style = "margin-left: 7px; background-color: #eceff1; cursor: pointer;"
         
             div2.appendChild(span)
             span.appendChild(logo)
         
             logo.src = this.logo
-            logo.style= "width: 30px; margin-left: 10px; "
+            logo.style= "width: 30px; margin-left: 10px;  "
 
             div2.addEventListener('click', function(){
                 Api.teams(this.id)
@@ -82,7 +83,7 @@ static createLeague(league_id, name, country, country_code, logo, flag) {
              li.appendChild(newDiv2)
 
              newDiv2.className = "collapsible-body"
-             newDiv2.style = "margin-left: 7px; background-color: #eceff1;"
+             newDiv2.style = "margin-left: 7px; background-color: #eceff1; cursor: pointer;"
              newDiv2.innerText = this.name
              newDiv2.id = this.league_id
  
@@ -98,13 +99,11 @@ static createLeague(league_id, name, country, country_code, logo, flag) {
    
        }
 
-       static getFavoruiteLeagues() {
+    }
 
-       }
            
               
 
-}
 
 
            
