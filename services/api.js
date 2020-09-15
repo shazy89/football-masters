@@ -54,7 +54,7 @@ let trigger = new Api
    }
 
    static players(id) {
-    fetch(`https://api-football-v1.p.rapidapi.com/v2/players/squad/${id}/2020`,{
+    fetch(`https://api-football-v1.p.rapidapi.com/v2/players/squad/${id}/2019`,{
       method: "GET",
       headers: {
           "x-rapidapi-host": "api-football-v1.p.rapidapi.com",
@@ -64,7 +64,7 @@ let trigger = new Api
     })
     .then(resp => resp.json())
     .then(data => Players.createPlayers(data.api.players.slice(0, 20), id)) 
-    //data.api.players.slice(0, 20)
+  
    }
 
   
