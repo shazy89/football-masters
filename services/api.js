@@ -50,8 +50,24 @@ let trigger = new Api
       }
     })
     .then(resp => resp.json())
-    .then(data => Teams.createTeams(data)) 
+    .then(data => Teams.createTeams(data, id)) 
    }
+
+   static players(id) {
+    fetch(`https://api-football-v1.p.rapidapi.com/v2/players/squad/${id}/2020`,{
+      method: "GET",
+      headers: {
+          "x-rapidapi-host": "api-football-v1.p.rapidapi.com",
+          "x-rapidapi-key": "145adf9b47msh8117898cad08650p129e6bjsn989da873df13",
+          "useQueryString": true
+      }
+    })
+    .then(resp => resp.json())
+    .then(data => {debugger}) 
+    //data.api.players.slice(0, 20)
+   }
+
+  
   }
        
 

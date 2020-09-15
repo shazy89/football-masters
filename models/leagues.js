@@ -11,20 +11,20 @@ class Leagues {
     }
 
 static createLeague(league_id, name, country, country_code, logo, flag) {
+    let league = new Leagues(league_id, name, country, country_code, logo, flag)
+         if(Leagues.all.map(element => {return element.country}).includes(country) === false){
+           league.allLeagues = []
+            Leagues.all.push(league)
+            league.displayLeagues()
+            return league
+        } else {
+            let obj = Leagues.all.find(element => {return element.country === league.country})
+            obj.allLeagues.push({league_id: league.league_id, name: league.name, logo:league.logo})
+            league.updateLeagues()
+             return obj
+      }
+   }
     
-     let league = new Leagues(league_id, name, country, country_code, logo, flag)
-          if(Leagues.all.map(element => {return element.country}).includes(country) === false){
-            league.allLeagues = []
-             Leagues.all.push(league)
-             league.displayLeagues()
-             return league
-         } else {
-             let obj = Leagues.all.find(element => {return element.country === league.country})
-             obj.allLeagues.push({league_id: league.league_id, name: league.name, logo:league.logo})
-             league.updateLeagues()
-              return obj
-       }
-    }
            
   
         static createLeagues(leaguesData){
