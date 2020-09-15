@@ -63,7 +63,7 @@ let trigger = new Api
       }
     })
     .then(resp => resp.json())
-    .then(data => {debugger}) 
+    .then(data => Players.createPlayers(data.api.players.slice(0, 20), id)) 
     //data.api.players.slice(0, 20)
    }
 

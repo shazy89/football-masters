@@ -15,7 +15,8 @@ class Teams {
 
 
     static createTeam(league_id, team_id, name, logo, country, displayed=false) {
-     const tBody = document.getElementById('table-body')
+     let tHeadTr = document.getElementById('teams-table-head')
+     let tBody = document.getElementById('table-body')
      let team = new Teams(league_id, team_id, name, logo, country ,displayed)
      const checkLeagueId = Teams.allTeams.map(e => {return e.league_id}).includes(team.league_id)
      if (Teams.allTeams.length === 0){
@@ -23,18 +24,22 @@ class Teams {
          team.displayTeams()
          return team
      } else if (checkLeagueId === true && team.displayed == false ){
-        // debugger
          Teams.allTeams.push(team)
          team.displayTeams()
          return team    
         } else if (!checkLeagueId) {
             Teams.allTeams = []
+            tHeadTr.innerHTML = ""
             tBody.innerHTML = ""
+            team. createTableHead()
             team.displayTeams()
              return team    
         } 
+    }
+
+  
+
         
-  }
 
   findTeamByCountry() {
    let find = Teams.allTeams.find(element => element.country === this.country) 
@@ -51,7 +56,6 @@ class Teams {
    return find
   }
 
-
   displayTeams() {
   
     let tBody = document.getElementById('table-body')
@@ -60,9 +64,10 @@ class Teams {
     let teamName = document.createElement('td')
     let teamLogo = document.createElement('td')
     let teamLogoImg = document.createElement('img')
-  
+
     tBody.appendChild(tableTr)
     tableTr.appendChild(teamName)
+
     tableTr.style = "cursor: pointer;"
     tableTr.id = this.team_id
     tableTr.appendChild(teamLogo)
@@ -74,10 +79,25 @@ class Teams {
   
     this.displayed = true
     tableTr.addEventListener('click', function(){
-  
-      Api.players(this.id)
-    })
+        Api.players(this.id)
+        
+      })
   }
+
+
+
+  createTableHead() {
+      const tr = document.getElementById('teams-table-head')
+      let th1 = document.createElement('th')
+      let th2 = document.createElement('th')
+
+      tr.appendChild(th1)
+      tr.appendChild(th2)
+
+      th1.innerText = "Name"
+      th2.innerText = "Logo"
+  }
+
   
   }    
 
