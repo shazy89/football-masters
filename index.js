@@ -4,10 +4,10 @@
   function callbacks() {
       Materialize.materialize()
       Api.leaguesdataRequest()
-      favouriteLeagues()
+      favoriteLeagues()
     }
 
-    function favouriteLeagues() {
+    function favoriteLeagues() {
      const leagueIDs = [2790, 2755, 2664, 2857, 2673, 2833, 2816, 1264]
       leagueIDs.forEach(lgId => {
         fetch(`https://api-football-v1.p.rapidapi.com/v2/leagues/league/${lgId}`,{
@@ -19,7 +19,7 @@
           }
         })
           .then(resp => resp.json())
-          .then(data => Leagues.createFavouriteLeagues(data) )
+          .then(data => Leagues.createFavoriteLeagues(data) )
         })
         }
 

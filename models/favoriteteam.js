@@ -1,0 +1,5 @@
+class FavoriteTeam {
+   constructor(player, ){
+
+   }
+}

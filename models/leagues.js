@@ -30,15 +30,16 @@ static createLeague(league_id, name, country, country_code, logo, flag) {
       return league
    }
 
-   static createFavouriteLeague(league_id, name, country, country_code, logo, flag){
+   static createFavoriteLeague(league_id, name, country, country_code, logo, flag){
        debugger
-    let league = new Leagues(league_id, name, country, country_code, logo, flag)
-        league.displayFavouriteLeague()
-        return league
-   }
+       let league = new Leagues(league_id, name, country, country_code, logo, flag)
+           league.displayFavoriteLeague()
+           return league
+      }
+
    
-       static createFavouriteLeagues(leaguesData){
-        let league = leaguesData.api.leagues.forEach(data => Leagues.createFavouriteLeague(data.league_id, data.name, data.country, data.country_code, data.logo, data.flag))
+       static createFavoriteLeagues(leaguesData){
+        let league = leaguesData.api.leagues.forEach(data => Leagues.createFavoriteLeague(data.league_id, data.name, data.country, data.country_code, data.logo, data.flag))
         return league
        }
            
@@ -111,8 +112,8 @@ static createLeague(league_id, name, country, country_code, logo, flag) {
    
        }
 
-       displayFavouriteLeague() {
-           const modalFavLeagues = document.getElementById('favourite-lgs')
+       displayFavoriteLeague() {
+           const modalFavLeagues = document.getElementById('favorite-lgs')
            const img = document.createElement('img')
 
            modalFavLeagues.appendChild(img)

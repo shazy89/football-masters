@@ -15,7 +15,6 @@ class Players {
         return players
     }
 
-
     static createPlayer(teamId, playerName, position, league_id) {
         let player = new Players(teamId, playerName, position, league_id)
         let tHeadTr = document.getElementById('teams-table-head')
@@ -39,12 +38,9 @@ class Players {
             Players.allPlayers.push(player)
             player.createTableHead()
             player.displayPlayers()
-
             return player
         }
     }
-
-
 
     displayPlayers() {
 
@@ -94,6 +90,10 @@ class Players {
     }
 
 }
+
+
+
+
 
 
 
