@@ -2,13 +2,9 @@ class Api {
 
 static allCountrieNames = []
 
-static leaguesdataRequest(){
-let trigger = new Api
-   trigger.loadCountries()
-   trigger.leagues()
-}
 
-  loadCountries(){
+
+ static loadCountries(){
     fetch("https://api-football-v1.p.rapidapi.com/v2/countries",{
         method: "GET",
         headers: {
@@ -18,14 +14,17 @@ let trigger = new Api
         }
       })
         .then(resp => resp.json())
-        .then(data => Api.getCountries(data) )
+        .then(data => {
+          Api.getCountries(data)
+          Api.leagues()
+        })
 }
    static getCountries(data) {
        data.api.countries.map(element => {Api.allCountrieNames.push({country: element.country}) 
      })
    }
 
-   leagues() {
+  static leagues() {
       for (let countryName of Api.allCountrieNames) {
     fetch(`https://api-football-v1.p.rapidapi.com/v2/leagues/country/${countryName.country}/2020`,{
       method: "GET",

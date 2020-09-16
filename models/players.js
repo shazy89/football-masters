@@ -78,26 +78,54 @@ class Players {
 
 
     static addPlayerToFavorites(playerName, playerPosition) {
-   
-        const cardDiv = document.getElementById('fav-team')
-        let li = document.createElement('li')
+        const userInputDiv = document.getElementById('user-input')
+        if(Players.favoritePlayers.length > 0 && Players.favoritePlayers.length < 2) {
+            let input = document.createElement('input')
+            let label = document.createElement('label')
 
-        cardDiv.appendChild(li)
-        li.innerText = `${playerName} - ${playerPosition}`
-        li.style = 'color: black;'
+            userInputDiv.appendChild(input)
+            userInputDiv.appendChild(label)
 
-        if (Players.favoritePlayers.length === 5 ){
-            const submitBtn = document.createElement('button')
-            cardDiv.appendChild(submitBtn)
-            submitBtn.className = "waves-effect waves-light btn-small right red"
-            submitBtn.innerText = "Submit"
-            submitBtn.addEventListener('click', function(e){
-                debugger
-                cardDiv.innerHTML = ""
-                Players.favoritePlayers = []
-            })
+            input.type = "tex"
+            input.className = "validate"
+            input.id = "username"
+
+            label.htmlFor = "username"
         }
-      }
+
+        const cardHideDiv = document.getElementById('card')
+          cardHideDiv.className = "row"
+          const cardDiv = document.getElementById('fav-team')
+          let li = document.createElement('li')
+  
+          cardDiv.appendChild(li)
+  
+          li.innerText = `${playerName} - ${playerPosition}`
+          li.style = 'color: black;'
+  
+          if (Players.favoritePlayers.length === 5 ){
+              const submitBtn = document.createElement('button')
+              cardDiv.appendChild(submitBtn)
+              submitBtn.className = "waves-effect waves-light btn-small right red"
+              submitBtn.innerText = "Submit"
+              submitBtn.addEventListener('click', function(){
+              let favPlayers = Players.favoritePlayers
+                   
+                 //  FavoriteTeam.createFavTeam(a , favPlayers)
+                  userInputDiv.innerHTML = ""
+                  cardHideDiv.className = "row hide"
+                  cardDiv.innerHTML = ""
+                  Players.favoritePlayers = []
+              })
+          }
+  
+        }
+
+
+            
+
+
+        
          
             
       createTableHead() {

@@ -2,10 +2,11 @@
 
 
   function callbacks() {
-      Materialize.materialize()
-      Api.leaguesdataRequest()
-      favoriteLeagues()
+    favoriteLeagues()
+    Api.loadCountries()
+    Materialize.materialize()
     }
+
 
     function favoriteLeagues() {
      const leagueIDs = [2790, 2755, 2664, 2857, 2673, 2833, 2816, 1264]
@@ -21,7 +22,7 @@
           .then(resp => resp.json())
           .then(data => Leagues.createFavoriteLeagues(data) )
         })
-        }
+   }
 
   
 
