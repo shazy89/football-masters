@@ -72,15 +72,10 @@ class Players {
             if (Players.favoritePlayers.length < 5) {
             Players.favoritePlayers.push({playerN, playerP})
             Players.addPlayerToFavorites(playerN, playerP)
-          } else if (Players.favoritePlayers.length === 4 ){
-            const cardDiv = document.getElementById('fav-team')
-            const submitBtn = document.createElement('button')
-            cardDiv.appendChild(submitBtn)
-            submitBtn.innerText = "Submit"
-            
-          }
-        })
-    }
+        }
+      })
+  }
+
 
     static addPlayerToFavorites(playerName, playerPosition) {
    
@@ -91,38 +86,50 @@ class Players {
         li.innerText = `${playerName} - ${playerPosition}`
         li.style = 'color: black;'
 
-        removeButton.addEventListener('click', function(){
-            debugger
-        })
+        if (Players.favoritePlayers.length === 5 ){
+            const submitBtn = document.createElement('button')
+            cardDiv.appendChild(submitBtn)
+            submitBtn.className = "waves-effect waves-light btn-small right red"
+            submitBtn.innerText = "Submit"
+            submitBtn.addEventListener('click', function(e){
+                debugger
+                cardDiv.innerHTML = ""
+                Players.favoritePlayers = []
+            })
+        }
+      }
+         
+            
+      createTableHead() {
+          const tr = document.getElementById('teams-table-head')
+          let th1 = document.createElement('th')
+          let th2 = document.createElement('th')
+          let th3 = document.createElement('th')
+          let backButton = document.createElement('button')
+    
+          tr.appendChild(th1)
+          tr.appendChild(th2)
+          tr.appendChild(th3)
+          th3.appendChild(backButton)
+    
+          th1.innerText = "Player"
+          th2.innerText = "Position"
+          backButton.id = this.league_id
+          backButton.innerText = "BacK"
+  
+          backButton.addEventListener('click', function(){
+              let tHeadTr = document.getElementById('teams-table-head')
+              let tBody = document.getElementById('table-body')
+  
+              tHeadTr.innerHTML = ""
+              tBody.innerHTML = ""
+              Api.teams(this.id)
+          })
+      }
+    }
  
-    }
+     
 
-    createTableHead() {
-        const tr = document.getElementById('teams-table-head')
-        let th1 = document.createElement('th')
-        let th2 = document.createElement('th')
-        let th3 = document.createElement('th')
-        let backButton = document.createElement('button')
-  
-        tr.appendChild(th1)
-        tr.appendChild(th2)
-        tr.appendChild(th3)
-        th3.appendChild(backButton)
-  
-        th1.innerText = "Player"
-        th2.innerText = "Position"
-        backButton.id = this.league_id
-        backButton.innerText = "BacK"
-
-        backButton.addEventListener('click', function(){
-            let tHeadTr = document.getElementById('teams-table-head')
-            let tBody = document.getElementById('table-body')
-
-            tHeadTr.innerHTML = ""
-            tBody.innerHTML = ""
-            Api.teams(this.id)
-        })
-    }
 
 
 
@@ -130,7 +137,6 @@ class Players {
 
         
 
-}
           
 
 
