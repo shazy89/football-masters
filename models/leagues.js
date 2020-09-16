@@ -25,12 +25,24 @@ static createLeague(league_id, name, country, country_code, logo, flag) {
       }
    }
     
+   static createLeagues(leaguesData){
+      let league = leaguesData.api.leagues.forEach(data => Leagues.createLeague(data.league_id, data.name, data.country, data.country_code, data.logo, data.flag))
+      return league
+   }
+
+   static createFavouriteLeague(league_id, name, country, country_code, logo, flag){
+       debugger
+    let league = new Leagues(league_id, name, country, country_code, logo, flag)
+        league.displayFavouriteLeague()
+        return league
+   }
+   
+       static createFavouriteLeagues(leaguesData){
+        let league = leaguesData.api.leagues.forEach(data => Leagues.createFavouriteLeague(data.league_id, data.name, data.country, data.country_code, data.logo, data.flag))
+        return league
+       }
            
   
-        static createLeagues(leaguesData){
-           let league = leaguesData.api.leagues.forEach(data => Leagues.createLeague(data.league_id, data.name, data.country, data.country_code, data.logo, data.flag))
-           return league
-        }
         
         displayLeagues() {
             const collapsableUl = () => document.querySelector('.collapsible')
@@ -99,7 +111,22 @@ static createLeague(league_id, name, country, country_code, logo, flag) {
    
        }
 
-    }
+       displayFavouriteLeague() {
+           const modalFavLeagues = document.getElementById('favourite-lgs')
+           const img = document.createElement('img')
+
+           modalFavLeagues.appendChild(img)
+           img.src = this.logo
+           img.id = this.league_id
+           img.style = "width: 80px; margin: 30px; cursor: pointer; "
+           img.addEventListener('click', function(){
+             Api.teams(this.id)
+           })
+        }
+ 
+     }
+
+
 
            
               

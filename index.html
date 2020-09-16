@@ -25,10 +25,11 @@
           </div>
         </nav>
         <div style="margin: 30px 0px 0px 150px ;">
-           <a class="waves-effect waves-light btn-large orange">Favourite Leagues</a>
-           <a class="waves-effect waves-light btn-large red"><i class="material-icons left">cloud</i>button</a>
-           <a class="waves-effect waves-light btn-large blue"><i class="material-icons left">cloud</i>button</a>
-        </div>
+            <a class="waves-effect waves-light btn-large modal-trigger orange" href="#modal1">Favourite Leagues</a>
+            <a class="waves-effect waves-light btn-large red"><i class="material-icons left">cloud</i>button</a>
+            <a class="waves-effect waves-light btn-large blue"><i class="material-icons left">cloud</i>button</a>
+         </div>
+     
         <div id="table" class="centered" style= "margin-left: 5%;">
             <table class="striped">
                 <thead class="responsive-table">
@@ -40,7 +41,17 @@
         </div>
     </div>
 
-    <div id="players-table" style= "margin-left: 5%; ">
+    <!-- Modal Structure -->
+    <div id="modal1" class="modal">
+      <div id='favourite-lgs' class="modal-content">
+      </div>
+    </div>
+
+
+
+
+    <div id="players-table" class="row" style= "margin-left: 5%; ">
+        <div class="flow-text">
         <table class="striped">
             <thead>
                 <tr id="players-table-head">
@@ -48,6 +59,7 @@
          </thead>
          <tbody id="table-body">
         </tbody >
+        </div>
     </div>
 
 
@@ -55,9 +67,11 @@
        <ul id="sidenav-left" class="sidenav sidenav-fixed" style="transform: translateX(0%);">
        <ul class="collapsible"> <ul>   
    </div>
-
- </body>
+</body>
 </html>
+
+   
+
 
  
         

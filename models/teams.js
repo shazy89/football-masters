@@ -37,6 +37,7 @@ class Teams {
               return team    
          } 
      }
+       
 
  
      findTeamByCountry() {
@@ -67,35 +68,50 @@ class Teams {
        tableTr.appendChild(teamName)
    
        tableTr.style = "cursor: pointer;"
+       tableTr.className = this.league_id
        tableTr.id = this.team_id
        tableTr.appendChild(teamLogo)
        teamLogo.appendChild(teamLogoImg)
+       
      
        teamName.innerText = this.name
        teamLogoImg.src = this.logo
-       teamLogoImg.style = "width: 40px;"
+       teamLogoImg.style = "width: 30px;"
+     
      
        this.displayed = true
        tableTr.addEventListener('click', function(){
-           Api.players(this.id)
+        let tHeadTr = document.getElementById('teams-table-head')
+        let tBody = document.getElementById('table-body')
+
+        tHeadTr.innerHTML = ""
+        tBody.innerHTML = ""
+           Api.players(this.id, this.className)
+        })
+    }
+
+   
+    createTableHead() {
+        const tr = document.getElementById('teams-table-head')
+        let th1 = document.createElement('th')
+        let th2 = document.createElement('th')
+
+        tr.appendChild(th1)
+        tr.appendChild(th2)
+
+        th1.innerText = "Name"
+        th2.innerText = "Logo"
+
+    }
+  
+   }    
+
+    
            
-         })
-     }
    
-     createTableHead() {
-         const tr = document.getElementById('teams-table-head')
-         let th1 = document.createElement('th')
-         let th2 = document.createElement('th')
    
-         tr.appendChild(th1)
-         tr.appendChild(th2)
-   
-         th1.innerText = "Name"
-         th2.innerText = "Logo"
-     }
    
      
-     }    
 
 
   
