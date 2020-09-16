@@ -1,6 +1,7 @@
 class Players {
+    static allPlayers = []
+    static favoritePlayers = []
 
-     static allPlayers = []
     constructor(teamId, playerName, position, league_id ){
       this.teamId = teamId
       this.playerName = playerName
@@ -49,20 +50,54 @@ class Players {
         let tableTr = document.createElement('tr')
         let playerName = document.createElement('td')
         let playerPosition = document.createElement('td')
+        let addPlayerButtonTd = document.createElement('td')
+        let addPlayerButton = document.createElement('button')
 
 
         tBody.appendChild(tableTr)
         tableTr.appendChild(playerName)
         tableTr.appendChild(playerPosition)
+        tableTr.appendChild(addPlayerButtonTd)
+        addPlayerButtonTd.appendChild(addPlayerButton)
 
 
         playerName.innerText = this.playerName
         playerPosition.innerText = this.position
+        addPlayerButton.innerText = 'Add favorite player'
+        addPlayerButton.style = 'color: green;'
 
+        addPlayerButton.addEventListener('click', function(e){
+            let playerN = e.path[2].childNodes[0].innerText 
+            let playerP = e.path[2].childNodes[1].innerText 
+            if (Players.favoritePlayers.length < 5) {
+            Players.favoritePlayers.push({playerN, playerP})
+            Players.addPlayerToFavorites(playerN, playerP)
+          } else if (Players.favoritePlayers.length === 4 ){
+            const cardDiv = document.getElementById('fav-team')
+            const submitBtn = document.createElement('button')
+            cardDiv.appendChild(submitBtn)
+            submitBtn.innerText = "Submit"
+            
+          }
+        })
+    }
+
+    static addPlayerToFavorites(playerName, playerPosition) {
+   
+        const cardDiv = document.getElementById('fav-team')
+        let li = document.createElement('li')
+
+        cardDiv.appendChild(li)
+        li.innerText = `${playerName} - ${playerPosition}`
+        li.style = 'color: black;'
+
+        removeButton.addEventListener('click', function(){
+            debugger
+        })
+ 
     }
 
     createTableHead() {
-        
         const tr = document.getElementById('teams-table-head')
         let th1 = document.createElement('th')
         let th2 = document.createElement('th')
@@ -89,7 +124,25 @@ class Players {
         })
     }
 
+
+
+
+
+        
+
 }
+          
+
+
+
+
+        
+
+    
+
+
+
+        
 
 
 

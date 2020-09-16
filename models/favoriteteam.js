@@ -1,5 +1,12 @@
 class FavoriteTeam {
-   constructor(player, ){
+    static players = []
+   constructor(teamName, userName){
+       this.teamName = teamName
+       this.userName = userName
+       this.players = []
+    }
 
-   }
+
+       
 }
+

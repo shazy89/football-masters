@@ -31,7 +31,7 @@ static createLeague(league_id, name, country, country_code, logo, flag) {
    }
 
    static createFavoriteLeague(league_id, name, country, country_code, logo, flag){
-       debugger
+
        let league = new Leagues(league_id, name, country, country_code, logo, flag)
            league.displayFavoriteLeague()
            return league
