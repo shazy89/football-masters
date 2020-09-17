@@ -78,7 +78,9 @@ class Players {
 
 
     static addPlayerToFavorites(playerName, playerPosition) {
+
         const userInputDiv = document.getElementById('user-input')
+     
         if(Players.favoritePlayers.length > 0 && Players.favoritePlayers.length < 2) {
             let input = document.createElement('input')
             let label = document.createElement('label')
@@ -86,41 +88,105 @@ class Players {
             userInputDiv.appendChild(input)
             userInputDiv.appendChild(label)
 
-            input.type = "tex"
+            input.type = "text"
             input.className = "validate"
-            input.id = "username"
+            input.id = "icon_prefix"
 
-            label.htmlFor = "username"
+            label.htmlFor = "icon_prefix"
+            label.innerText = "Name"
         }
-
+ 
         const cardHideDiv = document.getElementById('card')
           cardHideDiv.className = "row"
           const cardDiv = document.getElementById('fav-team')
+          let liDiv = document.createElement('div')
           let li = document.createElement('li')
-  
-          cardDiv.appendChild(li)
-  
+          let removeButton = document.createElement('button')
+          li.className = 'player'
+       
+          cardDiv.appendChild(liDiv)
+          liDiv.appendChild(li)
+          
           li.innerText = `${playerName} - ${playerPosition}`
           li.style = 'color: black;'
-  
-          if (Players.favoritePlayers.length === 5 ){
-              const submitBtn = document.createElement('button')
-              cardDiv.appendChild(submitBtn)
-              submitBtn.className = "waves-effect waves-light btn-small right red"
-              submitBtn.innerText = "Submit"
-              submitBtn.addEventListener('click', function(){
-              let favPlayers = Players.favoritePlayers
-                   
-                 //  FavoriteTeam.createFavTeam(a , favPlayers)
-                  userInputDiv.innerHTML = ""
-                  cardHideDiv.className = "row hide"
-                  cardDiv.innerHTML = ""
-                  Players.favoritePlayers = []
-              })
-          }
-  
-        }
+          li.id = playerName
 
+          li.appendChild(removeButton)
+          removeButton.innerText = "X"
+          removeButton.style = "background-color: red; width: 25px; border-radius: 20px;"
+
+          removeButton.addEventListener('click', function(e){
+              let removePlayer = Players.favoritePlayers.map(e => e.playerN ).indexOf(this.parentNode.id)
+              Players.favoritePlayers.splice(removePlayer, 1)
+              this.parentNode.remove()
+     
+            })
+
+     if (Players.favoritePlayers.length === 5 ){
+         const submitBtn = document.createElement('button')
+         submitBtn.id = 'submit-favplayers-btn'
+         cardDiv.appendChild(submitBtn)
+         submitBtn.className = "waves-effect waves-light btn-small right red"
+         submitBtn.innerText = "Submit"
+        
+         submitBtn.addEventListener('click', function(){
+         const input = document.getElementById('icon_prefix')
+         let favPlayers = Players.favoritePlayers
+      
+            //  FavoriteTeam.createFavTeam(input.value , favPlayers)
+             userInputDiv.innerHTML = ""
+             cardHideDiv.className = "row hide"
+             cardDiv.innerHTML = ""
+             Players.favoritePlayers = []
+       })
+
+     }
+
+   }
+   createTableHead() {
+       const tr = document.getElementById('teams-table-head')
+       let th1 = document.createElement('th')
+       let th2 = document.createElement('th')
+       let th3 = document.createElement('th')
+       let backButton = document.createElement('button')
+ 
+       tr.appendChild(th1)
+       tr.appendChild(th2)
+       tr.appendChild(th3)
+       th3.appendChild(backButton)
+ 
+       th1.innerText = "Player"
+       th2.innerText = "Position"
+       backButton.id = this.league_id
+       backButton.innerText = "BacK"
+
+       backButton.addEventListener('click', function(){
+           let tHeadTr = document.getElementById('teams-table-head')
+           let tBody = document.getElementById('table-body')
+
+           tHeadTr.innerHTML = ""
+           tBody.innerHTML = ""
+           Api.teams(this.id)
+       })
+   }
+ }
+    
+   
+  
+
+              
+              
+           
+           
+         
+          
+        
+  
+  
+            
+
+
+   
 
             
 
@@ -128,34 +194,6 @@ class Players {
         
          
             
-      createTableHead() {
-          const tr = document.getElementById('teams-table-head')
-          let th1 = document.createElement('th')
-          let th2 = document.createElement('th')
-          let th3 = document.createElement('th')
-          let backButton = document.createElement('button')
-    
-          tr.appendChild(th1)
-          tr.appendChild(th2)
-          tr.appendChild(th3)
-          th3.appendChild(backButton)
-    
-          th1.innerText = "Player"
-          th2.innerText = "Position"
-          backButton.id = this.league_id
-          backButton.innerText = "BacK"
-  
-          backButton.addEventListener('click', function(){
-              let tHeadTr = document.getElementById('teams-table-head')
-              let tBody = document.getElementById('table-body')
-  
-              tHeadTr.innerHTML = ""
-              tBody.innerHTML = ""
-              Api.teams(this.id)
-          })
-      }
-    }
- 
      
 
 

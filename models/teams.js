@@ -38,8 +38,6 @@ class Teams {
          } 
      }
        
-
- 
      findTeamByCountry() {
       let find = Teams.allTeams.find(element => element.country === this.country) 
       return find
@@ -105,6 +103,8 @@ class Teams {
     }
   
    }    
+
+ 
 
     
            
