@@ -129,11 +129,11 @@ class Players {
          submitBtn.className = "waves-effect waves-light btn-small right red"
          submitBtn.innerText = "Submit"
         
-         submitBtn.addEventListener('click', function(){
-         const input = document.getElementById('icon_prefix')
+         submitBtn.addEventListener('click', function(e){
+         const userName = document.getElementById('icon_prefix')
          let favPlayers = Players.favoritePlayers
       
-            //  FavoriteTeam.createFavTeam(input.value , favPlayers)
+            FavoriteTeam.createFromCard(e, userName.value , favPlayers)
              userInputDiv.innerHTML = ""
              cardHideDiv.className = "row hide"
              cardDiv.innerHTML = ""
