@@ -7,10 +7,30 @@ static allTeams = []
         this.players = players;
      }
 
+     static createFavTeams(formDAta){
+         let favteams = formDAta.forEach(data => {
+             FavoriteTeam.createFavTeam(data.id, data.username, data.players)
+         });
+         return favteams
+     }
+    
+       
+
      static createFavTeam(id, userName, players) {
         let newFavTeam = new FavoriteTeam(id, userName, players);
         FavoriteTeam.allTeams.push(newFavTeam);
+        return newFavTeam
      }
+  
+
+
+     static displayFavoriteTeams() {
+        const colFavoriteTeams = document.getElementById('favorite-teams-collapsible');
+        colFavoriteTeams.innerHTML = ''
+        FavoriteTeam.allTeams.forEach(team => team.displayFavoriteTeam())
+
+     }
+
 
      static createFromCard(e, userName, favPlayers) {
         e.preventDefault();
@@ -30,7 +50,8 @@ static allTeams = []
           })
           .then(resp => resp.json())
           .then(data => {
-           debugger
+            let favTeam = FavoriteTeam.createFavTeam(data.id, data.username, data.players);
+            favTeam.displayFavoriteTeam()
           })
          }
 
@@ -44,13 +65,51 @@ static allTeams = []
                 return resp.json()
               })
               .then(data => {
-                    debugger
+                FavoriteTeam.createFavTeams(data)
+                FavoriteTeam.displayFavoriteTeams()
+
               })
               .catch(errors => console.log(errors))
           }
 
+          displayFavoriteTeam(){
+            const colFavoriteTeams = document.getElementById('favorite-teams-collapsible');
+            const li = document.createElement('li');
+            const div1 = document.createElement('div');
+            const div2 = document.createElement('div2');
+            const span = document.createElement('span');
+            const removeButton = document.createElement('button');
+        
+            colFavoriteTeams.appendChild(li);
+            li.appendChild(div1)
+            li.appendChild(div2)
+            div2.appendChild(span)
+    
+            div1.className = "collapsible-header"
+            div1.innerText = this.userName
+            div1.id = this.id
+
+
+            div1.appendChild(removeButton)
+            div2.className = "collapsible-body"
+            removeButton.innerText = "remove"
+            removeButton.style = "color: red; margin-left: auto; border-radius: 20px;"
+            removeButton.addEventListener('click', function(){
+                this.parentNode.remove()
+            })
            
- }
+            this.players.forEach((player, index) => {
+                span.innerHTML += index + "  " + player.playername + `-` + player.position + `<br>`
+              })
+          }
+        }
+               
+
+           
+        
+       
+      
+
           
           
 

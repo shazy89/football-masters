@@ -6,7 +6,9 @@
     favoriteLeagues()
     Api.loadCountries()
     Materialize.materialize()
-    }
+    FavoriteTeam.loadFavoriteTeams()
+  }
+
 
 
     function favoriteLeagues() {

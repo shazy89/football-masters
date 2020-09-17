@@ -46,7 +46,7 @@ static createLeague(league_id, name, country, country_code, logo, flag) {
   
         
         displayLeagues() {
-            const collapsableUl = () => document.querySelector('.collapsible')
+            const collapsableUl = () => document.getElementById('collapsible-leagues')
             const li = document.createElement('li')
             const div1 = document.createElement('div')
             const flag = document.createElement('img')
