@@ -79,23 +79,7 @@ class Players {
 
     static addPlayerToFavorites(playerName, playerPosition) {
 
-        const userInputDiv = document.getElementById('user-input')
-     
-        if(Players.favoritePlayers.length > 0 && Players.favoritePlayers.length < 2) {
-            let input = document.createElement('input')
-            let label = document.createElement('label')
-
-            userInputDiv.appendChild(input)
-            userInputDiv.appendChild(label)
-
-            input.type = "text"
-            input.className = "validate"
-            input.id = "icon_prefix"
-
-            label.htmlFor = "icon_prefix"
-            label.innerText = "Name"
-        }
- 
+        const userInputDiv = document.getElementById('user-input') 
         const cardHideDiv = document.getElementById('card')
         const removeCard = document.getElementById('remove-card')
         const userName = document.getElementById('icon_prefix')
@@ -122,8 +106,8 @@ class Players {
               let removePlayer = Players.favoritePlayers.map(e => e.playerN ).indexOf(this.parentNode.id)
               Players.favoritePlayers.splice(removePlayer, 1)
               this.parentNode.remove()
-                  
             })
+                  
             removeCard.addEventListener('click', function(){
                 userInputDiv.innerHTML = ""
                 cardHideDiv.className = "row hide"

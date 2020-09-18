@@ -33,7 +33,7 @@
          <div id="top-ten-teams" style="display: flex; justify-content: space-between;">
         </div>
         <div id="favorite-teams" class="col s12 m9 " style=" width: inherit; margin-left: 10%;">
-           <ul class="collapsible popout hide" id="favorite-teams-collapsible">
+           <ul class="collapsible popout" id="favorite-teams-collapsible">
            </ul>
        </div>
              
@@ -47,16 +47,21 @@
                    <form class="col s12">
                    <div class="row">
                    <div class="input-field col s6" id="user-input">
-                   </div>
-                 </div>
-               </form>
-             </div>
-           <div id="fav-team">
-           </div>
-         </span>
-       </div>
-     </div>
-   </div>
+                    <input id="icon_prefix" type="text" class="validate">
+                    <label for="icon_prefix">Name</label>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div id="fav-team">
+          </div>
+          <button id="fav-team-card-submit-button" class="waves-effect waves-light btn-small right disabled">Submit</button>
+        </span>
+      </div>
+    </div>
+  </div>
+                  
+
    <div id="table" class="centered" style= "margin-left: 5%;">
        <table class="striped" id="teams-table">
            <thead class="responsive-table">

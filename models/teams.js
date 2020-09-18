@@ -117,6 +117,8 @@ class Teams {
         const topTen = document.getElementById('top-ten-teams')
         let div = document.createElement('div')
         let img = document.createElement('img')
+        let favoriteTeamsColabsable = document.getElementById("favorite-teams-collapsible")
+        let teamsTable = document.getElementById('teams-table')
 
         topTen.appendChild(div)
         div.appendChild(img)
@@ -126,10 +128,13 @@ class Teams {
         img.style = 'width: 70px;margin-left: 40px; margin-top: 10px; cursor: pointer; '
         img.src = this.logo
         img.addEventListener('click', function(){
+            favoriteTeamsColabsable.className = "favorite-teams-collapsible hide"
+            teamsTable.className = "striped"
             Api.players(this.parentNode.id)
         })
     }
 }    
+            
             
       
      

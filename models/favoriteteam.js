@@ -96,7 +96,6 @@ static allTeams = []
                  
            })
        }
-
        static deleteFavTeam() {
            
            this.parentNode.remove()
@@ -114,6 +113,7 @@ static allTeams = []
 
 
      }
+
 
        
 
