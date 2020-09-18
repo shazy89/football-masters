@@ -1,3 +1,4 @@
+const BaseUrl = 'http://localhost:3000/'
 document.addEventListener('DOMContentLoaded', callbacks)
 
 

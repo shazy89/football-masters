@@ -95,9 +95,11 @@ static allTeams = []
             div2.className = "collapsible-body"
             removeButton.innerText = "remove"
             removeButton.style = "color: red; margin-left: auto; border-radius: 20px;"
-            removeButton.addEventListener('click', function(){
-                this.parentNode.remove()
-            })
+            removeButton.addEventListener('click',  FavoriteTeam.deleteFavTeam)
+           // {
+          //     FavoriteTeam.deleteFavTeam()
+          //     this.parentNode.remove()
+          // })
            
             this.players.forEach((player, index) => {
                 span.innerHTML += index + "  " + player.playername + `-` + player.position + `<br>`
@@ -120,6 +122,23 @@ static allTeams = []
                   
             })
         }
+
+        static deleteFavTeam() {
+            
+            this.parentNode.remove()
+           fetch(`${BaseUrl}teams/${this.parentElement.id}`,{
+               method: "delete"
+           })
+           .then(resp => {
+             return resp.json();
+           })
+           .then(data => {
+            FavoriteTeam.allTeams = FavoriteTeam.allTeams.filter(team => team.id !== data.id);
+            FavoriteTeam.displayFavoriteTeams();
+          })
+        }
+
+
       }
          
                 
