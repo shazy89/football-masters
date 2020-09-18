@@ -34,7 +34,7 @@ static allTeams = []
                 players: favPlayers
             }
         }
-        fetch("http://localhost:3000/teams", {
+        fetch(`${BaseUrl}teams`, {
             method: "POST",
             headers: {
               "Accept": "application/json",

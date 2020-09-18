@@ -86,12 +86,10 @@ class Teams {
        tableTr.appendChild(teamLogo)
        teamLogo.appendChild(teamLogoImg)
        
-     
        teamName.innerText = this.name
        teamLogoImg.src = this.logo
        teamLogoImg.style = "width: 30px;"
-     
-     
+       
        this.displayed = true
        tableTr.addEventListener('click', function(){
         let tHeadTr = document.getElementById('teams-table-head')
@@ -102,8 +100,6 @@ class Teams {
            Api.players(this.id, this.className)
         })
     }
-
-   
     createTableHead() {
         const tr = document.getElementById('teams-table-head')
         let th1 = document.createElement('th')
@@ -121,15 +117,26 @@ class Teams {
         const topTen = document.getElementById('top-ten-teams')
         let div = document.createElement('div')
         let img = document.createElement('img')
-          debugger
+
         topTen.appendChild(div)
         div.appendChild(img)
+
+        div.id = this.team_id
         
-        img.style = 'width: 60px;margin-left: 40px;'
-        
+        img.style = 'width: 70px;margin-left: 40px; margin-top: 10px; cursor: pointer; '
         img.src = this.logo
+        img.addEventListener('click', function(){
+            Api.players(this.parentNode.id)
+        })
     }
 }    
+            
+      
+     
+     
+
+   
+        
 
     
         

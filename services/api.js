@@ -110,11 +110,13 @@ static allCountrieNames = []
           }
         })
           .then(resp => resp.json())
-          .then(data => {Teams.createTopTenTeams(data)} )
+          .then(data => {
+            Teams.createTopTenTeams(data)} )
 
-      })
-  }
-  }
+          })
+      }
+      }
+
 
   
        
