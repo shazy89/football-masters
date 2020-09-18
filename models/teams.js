@@ -1,5 +1,6 @@
 class Teams {
       static allTeams = []
+      static topTenTeams = []
     constructor(league_id, team_id, name, logo, country, displayed) {
         this.league_id = league_id
         this.team_id = team_id
@@ -37,6 +38,20 @@ class Teams {
               return team    
          } 
      }
+
+     static createTopTenTeams(teamsData, league_id=0){
+         let team = teamsData.api.teams.forEach(data => Teams.createTopTenTeam(league_id, data.team_id, data.name, data.logo, data.country))
+         return team
+     }
+       
+
+     static createTopTenTeam(league_id, team_id, name, logo, country, displayed=false){
+         let team = new Teams(league_id, team_id, name, logo, country ,displayed)
+         Teams.topTenTeams.push(team)
+         team.displayTopTen()
+         return team
+      }
+
        
      findTeamByCountry() {
       let find = Teams.allTeams.find(element => element.country === this.country) 
@@ -101,8 +116,27 @@ class Teams {
         th2.innerText = "Logo"
 
     }
-  
-   }    
+
+      displayTopTen(){
+        const topTen = document.getElementById('top-ten-teams')
+        let div = document.createElement('div')
+        let img = document.createElement('img')
+          debugger
+        topTen.appendChild(div)
+        div.appendChild(img)
+        
+        img.style = 'width: 60px;margin-left: 40px;'
+        
+        img.src = this.logo
+    }
+}    
+
+    
+        
+
+        
+
+
 
  
 
