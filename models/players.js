@@ -119,7 +119,7 @@ class Players {
               let removePlayer = Players.favoritePlayers.map(e => e.playerN ).indexOf(this.parentNode.id)
               Players.favoritePlayers.splice(removePlayer, 1)
               this.parentNode.remove()
-     
+                  
             })
 
      if (Players.favoritePlayers.length === 5 ){

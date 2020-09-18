@@ -52,9 +52,9 @@ static allTeams = []
           .then(data => {
             let favTeam = FavoriteTeam.createFavTeam(data.id, data.username, data.players);
             favTeam.displayFavoriteTeam()
+          
           })
          }
-
          static loadFavoriteTeams() {
 
             fetch("http://localhost:3000/teams")
@@ -67,6 +67,7 @@ static allTeams = []
               .then(data => {
                 FavoriteTeam.createFavTeams(data)
                 FavoriteTeam.displayFavoriteTeams()
+                FavoriteTeam.favoriteTeamsTrigger()
 
               })
               .catch(errors => console.log(errors))
@@ -102,8 +103,29 @@ static allTeams = []
                 span.innerHTML += index + "  " + player.playername + `-` + player.position + `<br>`
               })
           }
+
+          static favoriteTeamsTrigger(){
+            const triggerBtn = document.getElementById('fav-teams-trigger-btn')
+            
+            triggerBtn.addEventListener('click', function(){
+                let favoriteTeamsColabsable = document.getElementById("favorite-teams-collapsible")
+                let teamsTable = document.getElementById('teams-table')
+                if (favoriteTeamsColabsable.className === "collapsible popout"){
+                    favoriteTeamsColabsable.className = "collapsible popout hide"
+                    teamsTable.className = "striped"
+                } else {
+                    favoriteTeamsColabsable.className = "collapsible popout"
+                    teamsTable.className = "striped hide"
+                }
+                  
+            })
         }
+      }
+         
+                
+       
                
+
 
            
         

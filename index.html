@@ -27,74 +27,74 @@
         </nav>
         <div style="margin: 30px 0px 0px 150px ;">
             <a class="waves-effect waves-light btn-large modal-trigger orange" href="#modal1">Favorite Leagues</a>
-            <a class="waves-effect waves-light btn-large red"><i class="material-icons left">cloud</i>Favorite Teams</a>
+            <a class="waves-effect waves-light btn-large red" id="fav-teams-trigger-btn"><i class="material-icons left">cloud</i>Favorite Teams</a>
             <a class="waves-effect waves-light btn-large blue"><i class="material-icons left">cloud</i>button</a>
          </div>
      <div id="favorite-teams" class="col s12 m9" style=" width: inherit; margin-left: 10%;">
         <ul class="collapsible popout" id="favorite-teams-collapsible">
         </ul>
     </div>
+    <div class="row hide" id="card" >
+       <div class="col s12 m5 left" style="margin-left: 40px;">
+         <div class="card-panel #e6ee9c lime lighten-3 ">
+           <span class="white-text">
+               <h6  style="color: black;">Your Favorite Players</h6>
+               <div class="row">
+                   <form class="col s12">
+                   <div class="row">
+                   <div class="input-field col s6" id="user-input">
+                   </div>
+                 </div>
+               </form>
+             </div>
+           <div id="fav-team">
+           </div>
+         </span>
+       </div>
+     </div>
+   </div>
+   <div id="table" class="centered" style= "margin-left: 5%;">
+       <table class="striped" id="teams-table">
+           <thead class="responsive-table">
+               <tr id="teams-table-head">
+               </tr>
+             </thead>
+       <tbody id="table-body">
+       </tbody >
+   </div>
+</div>
+<!-- Modal Structure -->
+<div id="modal1" class="modal">
+ <div id='favorite-lgs' class="modal-content">
+ </div>
+</div>
+
+<div id="players-table" class="row" style= "margin-left: 5%; ">
+   <div class="flow-text">
+   <table class="striped">
+       <thead>
+           <tr id="players-table-head">
+           </tr>
+    </thead>
+    <tbody id="table-body">
+   </tbody >
+   </div>
+</div>
 
             
 
-         <div class="row hide" id="card" >
-            <div class="col s12 m5 left" style="margin-left: 40px;">
-              <div class="card-panel #e6ee9c lime lighten-3 ">
-                <span class="white-text">
-                    <h6  style="color: black;">Your Favorite Players</h6>
-                    <div class="row">
-                        <form class="col s12">
-                        <div class="row">
-                        <div class="input-field col s6" id="user-input">
-                        </div>
-                      </div>
-                    </form>
-                  </div>
-                <div id="fav-team">
-                </div>
-              </span>
-            </div>
-          </div>
-        </div>
 
-        <div id="table" class="centered" style= "margin-left: 5%;">
-            <table class="striped">
-                <thead class="responsive-table">
-                    <tr id="teams-table-head">
-                    </tr>
-                  </thead>
-            <tbody id="table-body">
-            </tbody >
-        </div>
-    </div>
+
+
+    <div>
+       <ul id="sidenav-left" class="sidenav sidenav-fixed" style="transform: translateX(0%);">
+       <ul class="collapsible" id="collapsible-leagues"> <ul>   
+   </div>
+</body>
+</html>
 
              
         
-            <!-- Modal Structure -->
-            <div id="modal1" class="modal">
-              <div id='favorite-lgs' class="modal-content">
-              </div>
-            </div>
-        
-            <div id="players-table" class="row" style= "margin-left: 5%; ">
-                <div class="flow-text">
-                <table class="striped">
-                    <thead>
-                        <tr id="players-table-head">
-                        </tr>
-                 </thead>
-                 <tbody id="table-body">
-                </tbody >
-                </div>
-            </div>
-        
-        
-            <div>
-               <ul id="sidenav-left" class="sidenav sidenav-fixed" style="transform: translateX(0%);">
-               <ul class="collapsible" id="collapsible-leagues"> <ul>   
-           </div>
-        </body>
-        </html>
 
 
 
