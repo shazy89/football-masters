@@ -97,11 +97,14 @@ class Players {
         }
  
         const cardHideDiv = document.getElementById('card')
+        const removeCard = document.getElementById('remove-card')
+        const userName = document.getElementById('icon_prefix')
+        const cardDiv = document.getElementById('fav-team')
+        let liDiv = document.createElement('div')
+        let li = document.createElement('li')
+        let removeButton = document.createElement('button')
+   
           cardHideDiv.className = "row"
-          const cardDiv = document.getElementById('fav-team')
-          let liDiv = document.createElement('div')
-          let li = document.createElement('li')
-          let removeButton = document.createElement('button')
           li.className = 'player'
        
           cardDiv.appendChild(liDiv)
@@ -121,55 +124,62 @@ class Players {
               this.parentNode.remove()
                   
             })
-
-     if (Players.favoritePlayers.length === 5 ){
-         const submitBtn = document.createElement('button')
-         submitBtn.id = 'submit-favplayers-btn'
-         cardDiv.appendChild(submitBtn)
-         submitBtn.className = "waves-effect waves-light btn-small right red"
-         submitBtn.innerText = "Submit"
-        
-         submitBtn.addEventListener('click', function(e){
-         const userName = document.getElementById('icon_prefix')
-         let favPlayers = Players.favoritePlayers
-      
-            FavoriteTeam.createFromCard(e, userName.value , favPlayers)
-             userInputDiv.innerHTML = ""
-             cardHideDiv.className = "row hide"
-             cardDiv.innerHTML = ""
-             Players.favoritePlayers = []
-       })
-
-     }
-
-   }
-   createTableHead() {
-       const tr = document.getElementById('teams-table-head')
-       let th1 = document.createElement('th')
-       let th2 = document.createElement('th')
-       let th3 = document.createElement('th')
-       let backButton = document.createElement('button')
+            removeCard.addEventListener('click', function(){
+                userInputDiv.innerHTML = ""
+                cardHideDiv.className = "row hide"
+                cardDiv.innerHTML = ""
+                Players.favoritePlayers = []
+            })
+            if (Players.favoritePlayers.length === 5 ){
+                const submitBtn = document.createElement('button')
+                submitBtn.id = 'submit-favplayers-btn'
+                cardDiv.appendChild(submitBtn)
+                submitBtn.className = "waves-effect waves-light btn-small right red"
+                submitBtn.innerText = "Submit"
+               
+                submitBtn.addEventListener('click', function(e){
+         
+                let favPlayers = Players.favoritePlayers
+                  FavoriteTeam.createFromCard(e, userName.value , favPlayers)
+                   userInputDiv.innerHTML = ""
+                   cardHideDiv.className = "row hide"
+                   cardDiv.innerHTML = ""
+                   Players.favoritePlayers = []
+           })
+        }
+    }
+    createTableHead() {
+        const tr = document.getElementById('teams-table-head')
+        let th1 = document.createElement('th')
+        let th2 = document.createElement('th')
+        let th3 = document.createElement('th')
+        let backButton = document.createElement('button')
+  
+        tr.appendChild(th1)
+        tr.appendChild(th2)
+        tr.appendChild(th3)
+        th3.appendChild(backButton)
+  
+        th1.innerText = "Player"
+        th2.innerText = "Position"
+        backButton.id = this.league_id
+        backButton.innerText = "BacK"
  
-       tr.appendChild(th1)
-       tr.appendChild(th2)
-       tr.appendChild(th3)
-       th3.appendChild(backButton)
+        backButton.addEventListener('click', function(){
+            let tHeadTr = document.getElementById('teams-table-head')
+            let tBody = document.getElementById('table-body')
  
-       th1.innerText = "Player"
-       th2.innerText = "Position"
-       backButton.id = this.league_id
-       backButton.innerText = "BacK"
+            tHeadTr.innerHTML = ""
+            tBody.innerHTML = ""
+            Api.teams(this.id)
+        })
+    }
+  }
+             
+       
 
-       backButton.addEventListener('click', function(){
-           let tHeadTr = document.getElementById('teams-table-head')
-           let tBody = document.getElementById('table-body')
 
-           tHeadTr.innerHTML = ""
-           tBody.innerHTML = ""
-           Api.teams(this.id)
-       })
-   }
- }
+
     
    
   

@@ -54,6 +54,8 @@ static createLeague(league_id, name, country, country_code, logo, flag) {
             const div2 = document.createElement('div')
             const span = document.createElement('span')
             const logo = document.createElement('img')
+            let favoriteTeamsColabsable = document.getElementById("favorite-teams-collapsible")
+            let teamsTable = document.getElementById('teams-table')
         
             collapsableUl().appendChild(li)
         
@@ -80,6 +82,8 @@ static createLeague(league_id, name, country, country_code, logo, flag) {
             logo.style= "width: 30px; margin-left: 10px;  "
 
             div2.addEventListener('click', function(){
+                favoriteTeamsColabsable.className = "collapsible popout hide"
+                teamsTable.className = "striped"
                 Api.teams(this.id)
             })
   
@@ -115,12 +119,16 @@ static createLeague(league_id, name, country, country_code, logo, flag) {
        displayFavoriteLeague() {
            const modalFavLeagues = document.getElementById('favorite-lgs')
            const img = document.createElement('img')
+           let favoriteTeamsColabsable = document.getElementById("favorite-teams-collapsible")
+           let teamsTable = document.getElementById('teams-table')
 
            modalFavLeagues.appendChild(img)
            img.src = this.logo
            img.id = this.league_id
            img.style = "width: 80px; margin: 30px; cursor: pointer; "
            img.addEventListener('click', function(){
+            favoriteTeamsColabsable.className = "collapsible popout hide"
+            teamsTable.className = "striped"
              Api.teams(this.id)
            })
         }
