@@ -1,5 +1,5 @@
 class Teams {
-    
+
       static allTeams = []
       static topTenTeams = []
 
@@ -17,14 +17,13 @@ class Teams {
      }
      
      static createTeam(league_id, team_id, name, logo, country, displayed=false) {
-      let tHeadTr = document.getElementById('teams-table-head')
-      let tBody = document.getElementById('table-body')
+
       let team = new Teams(league_id, team_id, name, logo, country ,displayed)
       const checkLeagueId = Teams.allTeams.map(e => {return e.league_id}).includes(team.league_id)
       if (Teams.allTeams.length === 0){
           Teams.allTeams.push(team)
-          tHeadTr.innerHTML = ""
-          tBody.innerHTML = ""
+          tHeadTr().innerHTML = ""
+          tBody().innerHTML = ""
           team.displayTeams()
           return team
       } else if (checkLeagueId === true && team.displayed == false ){
@@ -33,8 +32,8 @@ class Teams {
           return team    
          } else if (!checkLeagueId) {
              Teams.allTeams = []
-             tHeadTr.innerHTML = ""
-             tBody.innerHTML = ""
+             tHeadTr().innerHTML = ""
+             tBody().innerHTML = ""
              team.createTableHead()
              team.displayTeams()
               return team    
@@ -70,16 +69,13 @@ class Teams {
       }
     
       displayTeams() {
-      
-        const tBody = document.getElementById('table-body')
-        const tHeadTr = document.getElementById('teams-table-head')
-      
+            
         let tableTr = document.createElement('tr')
         let teamName = document.createElement('td')
         let teamLogo = document.createElement('td')
         let teamLogoImg = document.createElement('img')
     
-        tBody.appendChild(tableTr)
+        tBody().appendChild(tableTr)
         tableTr.appendChild(teamName)
     
         tableTr.style = "cursor: pointer;"
@@ -94,8 +90,8 @@ class Teams {
         
         this.displayed = true
         tableTr.addEventListener('click', function(){
-            tHeadTr.innerHTML = ""
-            tBody.innerHTML = ""
+            tHeadTr().innerHTML = ""
+            tBody().innerHTML = ""
                Api.players(this.id, this.className)
             })
         }

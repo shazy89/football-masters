@@ -10,35 +10,33 @@ class Players {
     }
 
     static createPlayers(playersData, teamId, league_id){
-        let players = playersData.forEach(data => {
+        const players = playersData.forEach(data => {
             Players.createPlayer(teamId, data.player_name, data.position, league_id)
         });
         return players
     }
 
     static createPlayer(teamId, playerName, position, league_id) {
-        let player = new Players(teamId, playerName, position, league_id)
-        let tHeadTr = document.getElementById('teams-table-head')
-        let tBody = document.getElementById('table-body')
+        const player = new Players(teamId, playerName, position, league_id)
         const checkTeamId = Players.allPlayers.map(e => {return e.teamId}).includes(player.teamId)
         if(Players.allPlayers.length === 0){
             Players.allPlayers.push(player)
-             tHeadTr.innerHTML = ""
-             tBody.innerHTML = ""
+             tHeadTr().innerHTML = ""
+             tBody().innerHTML = ""
              player.createTableHead()
              player.displayPlayers()
            return player
         } else if (checkTeamId === true){
-            Players.allPlayers.push(player)
-            player.displayPlayers()
+             Players.allPlayers.push(player)
+             player.displayPlayers()
             return player
         } else if (checkTeamId === false) {
-            Players.allTeams = []
-            tHeadTr.innerHTML = ""
-            tBody.innerHTML = ""
-            Players.allPlayers.push(player)
-            player.createTableHead()
-            player.displayPlayers()
+             Players.allTeams = []
+             tHeadTr().innerHTML = ""
+             tBody().innerHTML = ""
+             Players.allPlayers.push(player)
+             player.createTableHead()
+             player.displayPlayers()
             return player
         }
     }
@@ -76,16 +74,15 @@ class Players {
       })
   }
 
-
 static addPlayerToFavorites(playerName, playerPosition) {
 
     const cardHideDiv = document.getElementById('card')
     const removeCard = document.getElementById('remove-card')
     const userName = document.getElementById('icon_prefix')
     const cardDiv = document.getElementById('fav-team')
-    let liDiv = document.createElement('div')
-    let li = document.createElement('li')
-    let removeButton = document.createElement('button')
+    const liDiv = document.createElement('div')
+    const li = document.createElement('li')
+    const removeButton = document.createElement('button')
 
       cardHideDiv.className = "row"
       li.className = 'player'
