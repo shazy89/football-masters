@@ -1,4 +1,5 @@
 class Materialize {
+  
     static materialize(){
       const trigger = new Materialize
       trigger.modal()

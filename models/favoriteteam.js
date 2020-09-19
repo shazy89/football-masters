@@ -1,6 +1,8 @@
 
 class FavoriteTeam {
+
 static allTeams = []
+
     constructor(id, userName, players){
         this.id = id;
         this.userName = userName;

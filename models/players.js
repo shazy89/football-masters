@@ -1,4 +1,5 @@
 class Players {
+    
     static allPlayers = []
     static favoritePlayers = []
 
