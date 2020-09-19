@@ -97,7 +97,7 @@ static loadCountries(){
       })
  }
  static topTenTeams(){
-   const teamIDs = [85, 33, 42, 40, 49, 496, 529, 541, 165, 157];
+   const teamIDs = [529, 85, 50, 40, 496, 165, 42, 530, 161, 49];
      teamIDs.forEach(teamId => {
        fetch(`${rapidApiBaseUrl}/v2/teams/team/${teamId}`,{
          method: "GET",

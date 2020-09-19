@@ -1,6 +1,8 @@
 class Teams {
+    
       static allTeams = []
       static topTenTeams = []
+
     constructor(league_id, team_id, name, logo, country, displayed) {
         this.league_id = league_id
         this.team_id = team_id
@@ -120,11 +122,13 @@ class Teams {
     
             div.id = this.team_id
             
-            img.style = 'width: 70px;margin-left: 40px; margin-top: 10px; cursor: pointer; '
+            img.style = 'width: 70px;margin-left: 40px; margin-top: 10px;cursor: pointer; '
             img.src = this.logo
             img.addEventListener('click', function(){
                 favoriteTeamsColabsable.className = "favorite-teams-collapsible hide"
                 teamsTable.className = "striped"
+                tBody().innerHTML = ""
+                tHeadTr().innerHTML = ""
                 Api.players(this.parentNode.id)
             })
         }

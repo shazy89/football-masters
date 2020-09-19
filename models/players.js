@@ -47,11 +47,11 @@ class Players {
 
         const tBody = document.getElementById('table-body')
     
-        let tableTr = document.createElement('tr')
-        let playerName = document.createElement('td')
-        let playerPosition = document.createElement('td')
-        let addPlayerButtonTd = document.createElement('td')
-        let addPlayerButton = document.createElement('button')
+        const tableTr = document.createElement('tr')
+        const playerName = document.createElement('td')
+        const playerPosition = document.createElement('td')
+        const addPlayerButtonTd = document.createElement('td')
+        const addPlayerButton = document.createElement('button')
 
 
         tBody.appendChild(tableTr)
@@ -78,7 +78,7 @@ class Players {
 
 
 static addPlayerToFavorites(playerName, playerPosition) {
-    const userInputDiv = document.getElementById('user-input') 
+
     const cardHideDiv = document.getElementById('card')
     const removeCard = document.getElementById('remove-card')
     const userName = document.getElementById('icon_prefix')
@@ -130,10 +130,10 @@ static addPlayerToFavorites(playerName, playerPosition) {
        }
        createTableHead() {
            const tr = document.getElementById('teams-table-head')
-           let th1 = document.createElement('th')
-           let th2 = document.createElement('th')
-           let th3 = document.createElement('th')
-           let backButton = document.createElement('button')
+           const th1 = document.createElement('th')
+           const th2 = document.createElement('th')
+           const th3 = document.createElement('th')
+           const backButton = document.createElement('button')
      
            tr.appendChild(th1)
            tr.appendChild(th2)
@@ -146,16 +146,15 @@ static addPlayerToFavorites(playerName, playerPosition) {
            backButton.innerText = "BacK"
     
            backButton.addEventListener('click', function(){
-               let tHeadTr = document.getElementById('teams-table-head')
-               let tBody = document.getElementById('table-body')
-    
-               tHeadTr.innerHTML = ""
-               tBody.innerHTML = ""
+               tHeadTr().innerHTML = ""
+               tBody().innerHTML = ""
                Api.teams(this.id)
            })
        }
      }
-              
+
+             
+    
              
                   
        

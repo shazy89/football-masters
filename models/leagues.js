@@ -29,7 +29,6 @@ static createLeague(league_id, name, country, country_code, logo, flag) {
     }
  
     static createFavoriteLeague(league_id, name, country, country_code, logo, flag){
- 
         let league = new Leagues(league_id, name, country, country_code, logo, flag)
             league.displayFavoriteLeague()
             return league
@@ -42,7 +41,6 @@ static createLeague(league_id, name, country, country_code, logo, flag) {
            
        displayLeagues() {
            const collapsableUl = () => document.getElementById('collapsible-leagues')
- 
            const li = document.createElement('li')
            const div1 = document.createElement('div')
            const flag = document.createElement('img')
@@ -52,7 +50,7 @@ static createLeague(league_id, name, country, country_code, logo, flag) {
            let favoriteTeamsColabsable = document.getElementById("favorite-teams-collapsible")
            let teamsTableHeader = document.getElementById('teams-table-head')
            let teamsTableBody = document.getElementById('table-body')
-       
+ 
            collapsableUl().appendChild(li)
        
            li.appendChild(div1)
@@ -137,7 +135,9 @@ static createLeague(league_id, name, country, country_code, logo, flag) {
        }
   
     }
+ 
            
+       
        
  
  
