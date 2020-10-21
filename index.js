@@ -2,6 +2,7 @@ const BaseUrl = 'http://localhost:3000/'
 const rapidApiBaseUrl = `https://api-football-v1.p.rapidapi.com`
 const tBody = () => document.getElementById('table-body')
 const tHeadTr = () => document.getElementById('teams-table-head')
+
 document.addEventListener('DOMContentLoaded', callbacks)
 
 function callbacks() {
@@ -12,6 +13,7 @@ function callbacks() {
   Materialize.materialize()
 }
   
+
 
 
 

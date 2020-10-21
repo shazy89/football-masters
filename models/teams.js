@@ -70,10 +70,10 @@ class Teams {
     
       displayTeams() {
             
-        let tableTr = document.createElement('tr')
-        let teamName = document.createElement('td')
-        let teamLogo = document.createElement('td')
-        let teamLogoImg = document.createElement('img')
+        const tableTr = document.createElement('tr')
+        const teamName = document.createElement('td')
+        const teamLogo = document.createElement('td')
+        const teamLogoImg = document.createElement('img')
     
         tBody().appendChild(tableTr)
         tableTr.appendChild(teamName)

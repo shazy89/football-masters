@@ -1,5 +1,5 @@
 class Players {
-    
+
     static allPlayers = []
     static favoritePlayers = []
 
@@ -98,57 +98,56 @@ static addPlayerToFavorites(playerName, playerPosition) {
       removeButton.innerText = "X"
       removeButton.style = "background-color: red; width: 25px; border-radius: 20px;"
       removeButton.addEventListener('click', function(e){
-          let removePlayer = Players.favoritePlayers.map(e => e.playerN ).indexOf(this.parentNode.id)
-          Players.favoritePlayers.splice(removePlayer, 1)
-          this.parentNode.remove()
-        })
-        removeCard.addEventListener('click', function(){
-            userName.value = ""
-            cardHideDiv.className = "row hide"
-            cardDiv.innerHTML = ""
-            Players.favoritePlayers = []
-        })
-        if (Players.favoritePlayers.length === 5 ){
-            const submitBtn = document.createElement('button')
-            submitBtn.id = 'submit-favplayers-btn'
-            cardDiv.appendChild(submitBtn)
-            submitBtn.className = "waves-effect waves-light btn-small right red"
-            submitBtn.innerText = "Submit"
-           
-            submitBtn.addEventListener('click', function(e){
-     
-            let favPlayers = Players.favoritePlayers
-              FavoriteTeam.createFromCard(e, userName.value , favPlayers)
-               userName.value = ""
-               cardHideDiv.className = "row hide"
-               cardDiv.innerHTML = ""
-               Players.favoritePlayers = []
-         })
-        }
-       }
-       createTableHead() {
-           const tr = document.getElementById('teams-table-head')
-           const th1 = document.createElement('th')
-           const th2 = document.createElement('th')
-           const th3 = document.createElement('th')
-           const backButton = document.createElement('button')
-     
-           tr.appendChild(th1)
-           tr.appendChild(th2)
-           tr.appendChild(th3)
-           th3.appendChild(backButton)
-     
-           th1.innerText = "Player"
-           th2.innerText = "Position"
-           backButton.id = this.league_id
-           backButton.innerText = "BacK"
+      let removePlayer = Players.favoritePlayers.map(e => e.playerN ).indexOf(this.parentNode.id)
+      Players.favoritePlayers.splice(removePlayer, 1)
+      this.parentNode.remove()
+    })
+    removeCard.addEventListener('click', function(){
+        userName.value = ""
+        cardHideDiv.className = "row hide"
+        cardDiv.innerHTML = ""
+        Players.favoritePlayers = []
+    })
+    if (Players.favoritePlayers.length === 5 ){
+        const submitBtn = document.createElement('button')
+        submitBtn.id = 'submit-favplayers-btn'
+        cardDiv.appendChild(submitBtn)
+        submitBtn.className = "waves-effect waves-light btn-small right red"
+        submitBtn.innerText = "Submit"
+       
+        submitBtn.addEventListener('click', function(e){
     
-           backButton.addEventListener('click', function(){
-               tHeadTr().innerHTML = ""
-               tBody().innerHTML = ""
-               Api.teams(this.id)
-           })
+        let favPlayers = Players.favoritePlayers
+          FavoriteTeam.createFromCard(e, userName.value , favPlayers)
+           userName.value = ""
+           cardHideDiv.className = "row hide"
+           cardDiv.innerHTML = ""
+           Players.favoritePlayers = []
+     })
+    }
        }
+   createTableHead() {
+       const tr = document.getElementById('teams-table-head')
+       const th1 = document.createElement('th')
+       const th2 = document.createElement('th')
+       const th3 = document.createElement('th')
+       const backButton = document.createElement('button')
+   
+       tr.appendChild(th1)
+       tr.appendChild(th2)
+       tr.appendChild(th3)
+       th3.appendChild(backButton)
+   
+       th1.innerText = "Player"
+       th2.innerText = "Position"
+       backButton.id = this.league_id
+       backButton.innerText = "BacK"   
+       backButton.addEventListener('click', function(){
+           tHeadTr().innerHTML = ""
+           tBody().innerHTML = ""
+           Api.teams(this.id)
+       })
+   }
      }
 
              

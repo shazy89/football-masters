@@ -73,8 +73,9 @@ static allTeams = []
          removeButton.innerText = "remove";
          removeButton.style = "color: red; margin-left: auto; border-radius: 20px;";
          removeButton.addEventListener('click',  FavoriteTeam.deleteFavTeam);
+         
              this.players.forEach((player, index) => {
-             span.innerHTML += index + "  " + player.playername + `-` + player.position + `<br>`
+             span.innerHTML += index  + "  " + player.playername + `-` + player.position + `<br>`
            });
        }
 

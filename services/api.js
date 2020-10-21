@@ -65,22 +65,22 @@ static loadCountries(){
   }
 
   static loadFavoriteTeams() {
+    fetch(`${BaseUrl}teams`)
+      .then(resp => {
+        if (resp.status !== 200) {
+          throw new Error(resp.statusText);
+        }
+        return resp.json()
+      })
+      .then(data => {
+        FavoriteTeam.createFavTeams(data)
+        FavoriteTeam.displayFavoriteTeams()
+        FavoriteTeam.favoriteTeamsTrigger()
+ 
+      })
+      .catch(errors => console.log(errors))
+  }
 
-   fetch(`${BaseUrl}teams`)
-     .then(resp => {
-       if (resp.status !== 200) {
-         throw new Error(resp.statusText);
-       }
-       return resp.json()
-     })
-     .then(data => {
-       FavoriteTeam.createFavTeams(data)
-       FavoriteTeam.displayFavoriteTeams()
-       FavoriteTeam.favoriteTeamsTrigger()
-
-     })
-     .catch(errors => console.log(errors))
- }
  static favoriteLeagues() {
    const leagueIDs = [2790, 2755, 2664, 2857, 2673, 2833, 2816, 1264]
     leagueIDs.forEach(lgId => {
@@ -96,6 +96,7 @@ static loadCountries(){
         .then(data => Leagues.createFavoriteLeagues(data) )
       })
  }
+ 
  static topTenTeams(){
    const teamIDs = [529, 85, 50, 40, 496, 165, 42, 530, 161, 49];
      teamIDs.forEach(teamId => {
