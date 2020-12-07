@@ -9,7 +9,7 @@ FootBall Masters - single page soccer app.
  
 # INSTRUCTIONS:
 ## RAILS BACK END:
-
+* https://github.com/shazy89/football-masters-api
 To run this app on your local environment, clone this repository.
 
 Navigate to the football-masters-api directory and run:
