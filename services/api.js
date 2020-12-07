@@ -6,9 +6,9 @@ static loadCountries(){
    fetch(`${rapidApiBaseUrl}/v2/countries`,{
        method: "GET",
        headers: {
-           "x-rapidapi-host": "api-football-v1.p.rapidapi.com",
-           "x-rapidapi-key": "145adf9b47msh8117898cad08650p129e6bjsn989da873df13",
-           "useQueryString": true
+        "x-rapidapi-host": "api-football-v1.p.rapidapi.com",
+        "x-rapidapi-key": "12d0c35c88msh84ff1e150ec7dbap1cc9a2jsn1ef390d69f8d",
+        "useQueryString": true
        }
      })
        .then(resp => resp.json())
@@ -23,27 +23,27 @@ static loadCountries(){
   }
 
  static leagues() {
-     for (let countryName of Api.allCountrieNames) {
-   fetch(`${rapidApiBaseUrl}/v2/leagues/country/${countryName.country}/2020`,{
+   //  for (let countryName of Api.allCountrieNames) {
+   fetch(`${rapidApiBaseUrl}/v2/leagues/country/Spain/2020`,{
      method: "GET",
      headers: {
-         "x-rapidapi-host": "api-football-v1.p.rapidapi.com",
-         "x-rapidapi-key": "145adf9b47msh8117898cad08650p129e6bjsn989da873df13",
-         "useQueryString": true
+      "x-rapidapi-host": "api-football-v1.p.rapidapi.com",
+      "x-rapidapi-key": "12d0c35c88msh84ff1e150ec7dbap1cc9a2jsn1ef390d69f8d",
+      "useQueryString": true
      }
    })
      .then(resp => resp.json())
      .then(data =>  Leagues.createLeagues(data))
-   }
+  // }
   }
 
  static teams(id) {
    fetch(`${rapidApiBaseUrl}/v2/teams/league/${id}`,{
      method: "GET",
      headers: {
-         "x-rapidapi-host": "api-football-v1.p.rapidapi.com",
-         "x-rapidapi-key": "145adf9b47msh8117898cad08650p129e6bjsn989da873df13",
-         "useQueryString": true
+      "x-rapidapi-host": "api-football-v1.p.rapidapi.com",
+      "x-rapidapi-key": "12d0c35c88msh84ff1e150ec7dbap1cc9a2jsn1ef390d69f8d",
+      "useQueryString": true
      }
    })
    .then(resp => resp.json())
@@ -54,9 +54,9 @@ static loadCountries(){
    fetch(`${rapidApiBaseUrl}/v2/players/squad/${id}/2019`,{
      method: "GET",
      headers: {
-         "x-rapidapi-host": "api-football-v1.p.rapidapi.com",
-         "x-rapidapi-key": "145adf9b47msh8117898cad08650p129e6bjsn989da873df13",
-         "useQueryString": true
+      "x-rapidapi-host": "api-football-v1.p.rapidapi.com",
+      "x-rapidapi-key": "12d0c35c88msh84ff1e150ec7dbap1cc9a2jsn1ef390d69f8d",
+      "useQueryString": true
      }
    })
    .then(resp => resp.json())
@@ -87,9 +87,9 @@ static loadCountries(){
       fetch(`${rapidApiBaseUrl}/v2/leagues/league/${lgId}`,{
         method: "GET",
         headers: {
-            "x-rapidapi-host": "api-football-v1.p.rapidapi.com",
-            "x-rapidapi-key": "145adf9b47msh8117898cad08650p129e6bjsn989da873df13",
-            "useQueryString": true
+          "x-rapidapi-host": "api-football-v1.p.rapidapi.com",
+          "x-rapidapi-key": "12d0c35c88msh84ff1e150ec7dbap1cc9a2jsn1ef390d69f8d",
+          "useQueryString": true
         }
       })
         .then(resp => resp.json())
@@ -103,9 +103,9 @@ static loadCountries(){
        fetch(`${rapidApiBaseUrl}/v2/teams/team/${teamId}`,{
          method: "GET",
          headers: {
-             "x-rapidapi-host": "api-football-v1.p.rapidapi.com",
-             "x-rapidapi-key": "145adf9b47msh8117898cad08650p129e6bjsn989da873df13",
-             "useQueryString": true
+          "x-rapidapi-host": "api-football-v1.p.rapidapi.com",
+          "x-rapidapi-key": "12d0c35c88msh84ff1e150ec7dbap1cc9a2jsn1ef390d69f8d",
+          "useQueryString": true
          }
        })
          .then(resp => resp.json())

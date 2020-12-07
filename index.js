@@ -8,7 +8,8 @@ document.addEventListener('DOMContentLoaded', callbacks)
 function callbacks() {
   Api.topTenTeams()
   Api.favoriteLeagues()
-  Api.loadCountries()
+//  Api.loadCountries()
+  Api.leagues()
   Api.loadFavoriteTeams()
   Materialize.materialize()
 }
